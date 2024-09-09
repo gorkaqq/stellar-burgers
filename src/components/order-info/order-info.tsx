@@ -16,15 +16,7 @@ export const OrderInfo: FC = () => {
   const orderNumber = useParams();
   /** TODO: взять переменные orderData и ingredients из стора */
   const { orderModalData } = useSelector(getOrderSelector);
-  // const orderData = {
-  //   createdAt: '',
-  //   ingredients: [],
-  //   _id: '',
-  //   status: '',
-  //   name: '',
-  //   updatedAt: 'string',
-  //   number: 0
-  // };
+
   useEffect(() => {
     dispatch(getOrderByNumberThunk(Number(orderNumber.number)));
 

@@ -12,15 +12,7 @@ import { Preloader } from '@ui';
 
 export const BurgerIngredients: FC = () => {
   const dispatch = useDispatch();
-  const { ingredients, isIngredientsLoading, error } = useSelector(
-    getIngredientsSelector
-  );
-
-  useEffect(() => {
-    if (!ingredients.length && !isIngredientsLoading) {
-      dispatch(getIngredientsThunk());
-    }
-  }, []);
+  const { ingredients } = useSelector(getIngredientsSelector);
 
   /** TODO: взять переменные из стора */
   const buns = ingredients.filter((ingredient) => ingredient.type === 'bun');
