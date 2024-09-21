@@ -10,7 +10,7 @@ import {
 } from '../../utils/burger-api';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TOrder, TUser } from '@utils-types';
-import { getCookie, setCookie } from '../../utils/cookie';
+import { deleteCookie, getCookie, setCookie } from '../../utils/cookie';
 
 export const checkUserAuth = createAsyncThunk(
   'user/checkUserAuth',
@@ -47,7 +47,11 @@ export const loginThunk = createAsyncThunk(
   }
 );
 
-export const logoutThunk = createAsyncThunk('user/logout', logoutApi);
+export const logoutThunk = createAsyncThunk('user/logout', async () => {
+  await logoutApi();
+  deleteCookie('accessToken');
+  localStorage.removeItem('refreshToken');
+});
 
 export const getUserOrdersThunk = createAsyncThunk(
   'user/getOrders',
