@@ -11,7 +11,7 @@ import { burgerConstructorSlice } from '../features/burger-constructor/burgerCon
 import { userSlice } from '../features/user/userSlice';
 import { orderSlice } from '../features/order/orderSlice';
 
-const rootReducer = combineSlices(
+export const rootReducer = combineSlices(
   ingredientsSlice,
   feedsSlice,
   burgerConstructorSlice,
@@ -19,7 +19,7 @@ const rootReducer = combineSlices(
   orderSlice
 );
 
-const store = configureStore({
+export const store = configureStore({
   reducer: rootReducer,
   devTools: process.env.NODE_ENV !== 'production'
 });
