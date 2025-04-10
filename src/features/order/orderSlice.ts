@@ -1,4 +1,4 @@
-import { getOrderByNumberApi, orderBurgerApi } from '@api';
+import { getOrderByNumberApi, orderBurgerApi } from '../../utils/burger-api';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TOrder } from '@utils-types';
 
@@ -37,9 +37,11 @@ export const orderSlice = createSlice({
       })
       .addCase(orderThunk.fulfilled, (state, action) => {
         state.orderModalData = action.payload.order;
+        state.orderRequest = false;
       });
     builder.addCase(getOrderByNumberThunk.fulfilled, (state, action) => {
       state.orderModalData = action.payload.orders[0];
+      state.orderRequest = false;
     });
     1;
   },
